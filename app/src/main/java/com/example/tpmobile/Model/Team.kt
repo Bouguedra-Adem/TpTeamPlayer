@@ -1,4 +1,4 @@
 package com.example.tpmobile.Model
 
-data class Team (val id_team:Int,val team_name:String,val continent :String ){
+data class Team (var _id:String,var team_name:String,var continent :String ){
 }

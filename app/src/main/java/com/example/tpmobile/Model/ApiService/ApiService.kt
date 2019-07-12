@@ -24,13 +24,14 @@ interface ApiService {
     @POST("/CreateTeam")
     fun createAccount(@Body team:Team):Call<Team>
 
+    //https://radiant-brook-13048.herokuapp.com/
+    //http://10.0.2.2:3000/
 
     companion object Factory {
         fun create(): ApiService {
             val retrofit = Retrofit.Builder()
-                .baseUrl("localhost:3000/")
+                .baseUrl("https://radiant-brook-13048.herokuapp.com/")
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
 
             return retrofit.create(ApiService::class.java)

@@ -10,6 +10,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.math.log
 
 class RepoTeam {
     private var apiService = ApiService.create()
@@ -20,19 +21,26 @@ class RepoTeam {
 
     fun getAllNameTeam():ArrayList<String>{
 
-        var TeamList:ArrayList<Team> = arrayListOf()
+        var TeamList:ArrayList<Team>
         var  TeamName:ArrayList<String> = arrayListOf()
+
         apiService.getAllNameTeam().enqueue(object : Callback<ArrayList<Team>> {
-            override fun onResponse(call: Call<ArrayList<Team>>, response: Response<ArrayList<Team>>) {
+
+            override fun onResponse(call: Call<ArrayList<Team>>?, response: Response<ArrayList<Team>?>) {
+
                TeamList = response.body()!!
-                if (TeamList != null) {
+
                   TeamList.forEach {
                       TeamName.add(it.toString())
-                  }
-                }
+
+                          }
             }
             override fun onFailure(call: Call<ArrayList<Team>>, t: Throwable) {
+                Log.e("tag",t.message)
+                Log.e("tag",t.cause.toString())
+
                 error("KO")
+
             }
         })
 
