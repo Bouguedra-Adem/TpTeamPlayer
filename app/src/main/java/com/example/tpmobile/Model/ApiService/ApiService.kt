@@ -14,8 +14,8 @@ import retrofit2.http.Path
 interface ApiService {
 
 
-    @GET("/team/{team_name}")
-    fun getAllNameTeam(@Path(value = "team_name", encoded = true) team_name: String):Call<ArrayList<String>>
+    @GET("/Team")
+    fun getAllNameTeam():Call<ArrayList<Team>>
 
 
     @GET("/Player/{team_name}")
@@ -28,7 +28,7 @@ interface ApiService {
     companion object Factory {
         fun create(): ApiService {
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://ancient-harbor-80131.herokuapp.com/")
+                .baseUrl("localhost:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()

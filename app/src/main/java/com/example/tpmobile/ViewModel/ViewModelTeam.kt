@@ -10,17 +10,20 @@ import com.example.tpmobile.Repo.RepoTeam
 class ViewModelTeam:ViewModel() {
     var teamRep:RepoTeam= RepoTeam()
 
-    private val AllNameTeamm:MutableLiveData<ArrayList<String>> = MutableLiveData()
-    private val AllPlayerTeamm:MutableLiveData<ArrayList<Player>> = MutableLiveData()
 
 
-   fun  getAllNameTeamFromRepo(NameTeam:String): MutableLiveData<ArrayList<Player>> {
-       this.AllPlayerTeamm.postValue(teamRep.getListPlayerByNameTeam(NameTeam))
-       return this.AllPlayerTeamm
+
+   fun  getAllPlayerByTeam(NameTeam:String):ArrayList<Player> {
+
+       return  teamRep.getListPlayerByNameTeam(NameTeam)
    }
-   fun CreatTeam(team: Team){
-       this.teamRep.CreateTeam(team)
+    fun getAllnameTeam():ArrayList<String>{
+       return this.teamRep.getAllNameTeam()
    }
+    fun CreateTeam(team: Team){
+        this.teamRep.CreateTeam(team)
+
+    }
 
 
 

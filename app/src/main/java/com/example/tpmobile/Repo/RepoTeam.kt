@@ -18,23 +18,26 @@ class RepoTeam {
         this.apiService = ApiService.create()
     }
 
-    fun getAllNameTeam(NameTeam:String):ArrayList<String>{
+    fun getAllNameTeam():ArrayList<String>{
 
-        var NameList:ArrayList<String> = arrayListOf()
-        apiService.getAllNameTeam(NameTeam).enqueue(object : Callback<ArrayList<String>> {
-            override fun onResponse(call: Call<ArrayList<String>>, response: Response<ArrayList<String>>) {
-                NameList = response.body()!!
-                if (NameList != null) {
-                  Log.d("Allname","Allaname")
+        var TeamList:ArrayList<Team> = arrayListOf()
+        var  TeamName:ArrayList<String> = arrayListOf()
+        apiService.getAllNameTeam().enqueue(object : Callback<ArrayList<Team>> {
+            override fun onResponse(call: Call<ArrayList<Team>>, response: Response<ArrayList<Team>>) {
+               TeamList = response.body()!!
+                if (TeamList != null) {
+                  TeamList.forEach {
+                      TeamName.add(it.toString())
+                  }
                 }
             }
-            override fun onFailure(call: Call<ArrayList<String>>, t: Throwable) {
+            override fun onFailure(call: Call<ArrayList<Team>>, t: Throwable) {
                 error("KO")
             }
         })
 
 
-        return NameList
+        return TeamName
     }
     fun getListPlayerByNameTeam(NameTeam:String):ArrayList<Player>{
         var PlayerList:ArrayList<Player> = arrayListOf()

@@ -9,6 +9,12 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".View.insertTeam">
+        </activity>
+        <activity android:name=".View.ShowAllPlayerByName">
+        </activity>
+        <activity android:name=".View.ShowAllTeamName">
+        </activity>
         <activity android:name=".View.ShowAllName">
         </activity>
         <activity android:name=".View.MainActivity">
