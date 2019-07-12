@@ -13,7 +13,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class insertTeam : AppCompatActivity() {
-    private var apiService = ApiService.create()
+
+   private var apiService = ApiService.create()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_insert_team)
@@ -36,7 +38,4 @@ class insertTeam : AppCompatActivity() {
 
          }
     }
-
-
-
 }

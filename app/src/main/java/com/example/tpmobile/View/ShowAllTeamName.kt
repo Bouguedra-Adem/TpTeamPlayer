@@ -1,12 +1,15 @@
 package com.example.tpmobile.View
 
-import android.os.Build
+
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
-import androidx.annotation.RequiresApi
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProviders
 import com.example.tpmobile.Model.ApiService.ApiService
 import com.example.tpmobile.Model.Team
@@ -20,31 +23,27 @@ class ShowAllTeamName : AppCompatActivity() {
     private var apiService = ApiService.create()
 
     private lateinit var listView : ListView
-    @RequiresApi(Build.VERSION_CODES.P)
+
+
+
+    private var apiService = ApiService.create()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_all_team_name)
-        //val viewModel= ViewModelProviders.of(this).get(ViewModelTeam ::class.java)
 
-// 1
-       // var recipeList =viewModel.getAllnameTeam()
-       // Log.e("view",recipeList.toString())
-        var TeamName:ArrayList<String> = arrayListOf()
+
+        this.apiService = ApiService.create()
         var TeamList:ArrayList<Team>
+        var  TeamName:ArrayList<String> = arrayListOf()
         apiService.getAllNameTeam().enqueue(object : Callback<ArrayList<Team>> {
-
-            override fun onResponse(call: Call<ArrayList<Team>>?, response: Response<ArrayList<Team>?>)  {
-
+            override fun onResponse(call: Call<ArrayList<Team>>?, response: Response<ArrayList<Team>?>) {
                 TeamList = response.body()!!
-
                 TeamList.forEach {
-                    Log.e("team",it.toString())
                     TeamName.add(it.team_name)
-
                 }
-                affiche(TeamName)
-
-
+                Log.e("TeamNameMustaphaIN",TeamName.toString())
+                Afficher(TeamName)
 
             }
             override fun onFailure(call: Call<ArrayList<Team>>, t: Throwable) {
@@ -52,16 +51,32 @@ class ShowAllTeamName : AppCompatActivity() {
                 Log.e("tag",t.cause.toString())
 
                 error("KO")
-
             }
-            })
-
-
+        })
     }
-    fun affiche(team:ArrayList<String>){
-        listView = this.findViewById(R.id.listview)
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, team)
+
+    fun Afficher( teamName:ArrayList<String>){
+        Log.e("FromAfficher",teamName.toString())
+        listView = findViewById<ListView>(R.id.listviewteamname)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, teamName)
         listView.adapter = adapter
+
+
+
+        listView.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+            Log.e("tagmustaphajoure",teamName.get(position))
+            val intent = Intent(this, ShowAllPlayerByName::class.java)
+            intent.putExtra("TeamName", teamName.get(position))
+            startActivity(intent)
+        }
+
+      /*  listView.setOnItemClickListener(AdapterView.OnItemClickListener { parent, view, position, id ->
+            Log.e("tagmustaphajoure",teamName.get(position))
+            val intent = Intent(this, ShowAllPlayerByName::class.java)
+            intent.putExtra("Username", teamName.get(position))
+            startActivity(intent)
+        })*/
+
 
     }
 }

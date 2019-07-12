@@ -18,11 +18,11 @@ class MainActivity : AppCompatActivity() {
 
 
         }
-        button2.setOnClickListener {
+       /* button2.setOnClickListener {
             val intent = Intent(this, ShowAllPlayerByName::class.java)
                 startActivity(intent)
 
-        }
+        }*/
         button3.setOnClickListener {
             val intent = Intent(this, insertTeam::class.java)
                 startActivity(intent)

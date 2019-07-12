@@ -15,6 +15,11 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
 import kotlin.math.log
+import org.json.JSONArray
+import retrofit2.Retrofit
+import java.util.concurrent.ArrayBlockingQueue
+import java.util.concurrent.BlockingQueue
+
 
 class RepoTeam {
 
@@ -24,7 +29,6 @@ class RepoTeam {
         this.apiService = ApiService.create()
     }
 
-    @RequiresApi(Build.VERSION_CODES.P)
     fun getAllNameTeam():ArrayList<String>{
         var TeamName:ArrayList<String> = arrayListOf()
         val TeamList:ArrayList<Team>
@@ -33,12 +37,26 @@ class RepoTeam {
         Log.e("kkk",TeamName.toString())
 
 
+      //  var blockingqueue:BlockingQueue<ArrayList<Team>>
+     //   blockingqueue = ArrayBlockingQueue(1)
+        var TeamList:ArrayList<Team>
+        var TeamListOut:ArrayList<Team>
+        var  TeamName:ArrayList<String> = arrayListOf()
+
+
 /*
         apiService.getAllNameTeam().enqueue(object : Callback<ArrayList<Team>> {
 
             override fun onResponse(call: Call<ArrayList<Team>>?, response: Response<ArrayList<Team>?>)  {
 
                TeamList = response.body()!!
+               // blockingqueue.add(TeamList)
+                TeamList.forEach {
+                    TeamName.add(it.toString())
+                }
+                Log.e("TeamNameMustaphaIN",TeamName.toString())
+                Afficher(TeamName)
+
 
                   TeamList.forEach {
                       Log.e("team",it.toString())
@@ -58,11 +76,17 @@ class RepoTeam {
 
             }
 
+
         })*/
 
 
       return  TeamName
 
+
+    }
+
+    fun Afficher( teamName:ArrayList<String>){
+        Log.e("FromAfficher",teamName.toString())
     }
     fun getListPlayerByNameTeam(NameTeam:String):ArrayList<Player>{
         var PlayerList:ArrayList<Player> = arrayListOf()
