@@ -1,5 +1,7 @@
 package com.example.tpmobile.ViewModel
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,6 +19,7 @@ class ViewModelTeam:ViewModel() {
 
        return  teamRep.getListPlayerByNameTeam(NameTeam)
    }
+    @RequiresApi(Build.VERSION_CODES.P)
     fun getAllnameTeam():ArrayList<String>{
        return this.teamRep.getAllNameTeam()
    }

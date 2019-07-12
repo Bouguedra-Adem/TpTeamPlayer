@@ -1,7 +1,10 @@
 package com.example.tpmobile.Repo
 
+import android.os.Build
+import android.os.Handler
 import android.util.Log
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.example.tpmobile.Model.ApiService.ApiService
 import com.example.tpmobile.Model.Player
 import com.example.tpmobile.Model.Team
@@ -9,6 +12,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
+import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
 import kotlin.math.log
 import org.json.JSONArray
@@ -18,14 +22,20 @@ import java.util.concurrent.BlockingQueue
 
 
 class RepoTeam {
+
     private var apiService = ApiService.create()
 
     init {
         this.apiService = ApiService.create()
     }
 
-
     fun getAllNameTeam():ArrayList<String>{
+        var TeamName:ArrayList<String> = arrayListOf()
+        val TeamList:ArrayList<Team>
+
+        TeamList= apiService.getAllNameTeam().execute().body()!!
+        Log.e("kkk",TeamName.toString())
+
 
       //  var blockingqueue:BlockingQueue<ArrayList<Team>>
      //   blockingqueue = ArrayBlockingQueue(1)
@@ -33,9 +43,11 @@ class RepoTeam {
         var TeamListOut:ArrayList<Team>
         var  TeamName:ArrayList<String> = arrayListOf()
 
+
+/*
         apiService.getAllNameTeam().enqueue(object : Callback<ArrayList<Team>> {
 
-            override fun onResponse(call: Call<ArrayList<Team>>?, response: Response<ArrayList<Team>?>) {
+            override fun onResponse(call: Call<ArrayList<Team>>?, response: Response<ArrayList<Team>?>)  {
 
                TeamList = response.body()!!
                // blockingqueue.add(TeamList)
@@ -45,6 +57,16 @@ class RepoTeam {
                 Log.e("TeamNameMustaphaIN",TeamName.toString())
                 Afficher(TeamName)
 
+
+                  TeamList.forEach {
+                      Log.e("team",it.toString())
+                    TeamName.add(it.team_name)
+
+                          }
+
+                Log.e("teamname1",TeamName.toString())
+
+
             }
             override fun onFailure(call: Call<ArrayList<Team>>, t: Throwable) {
                 Log.e("tag",t.message)
@@ -53,14 +75,14 @@ class RepoTeam {
                 error("KO")
 
             }
-        })
-
-      //  TeamListOut = blockingqueue.take()
 
 
+        })*/
 
-        Log.e("TeamNameMustapha",TeamName.toString())
-        return TeamName
+
+      return  TeamName
+
+
     }
 
     fun Afficher( teamName:ArrayList<String>){
@@ -87,7 +109,7 @@ class RepoTeam {
 
     fun CreateTeam(team:Team):String{
         var stringReponse:String=""
-        apiService.createAccount(team).enqueue(object : Callback<Team> {
+        apiService.createTeam(team).enqueue(object : Callback<Team> {
             override fun onResponse(call: Call<Team>, response: Response<Team>) {
                stringReponse="inserstion team avec succee"
             }

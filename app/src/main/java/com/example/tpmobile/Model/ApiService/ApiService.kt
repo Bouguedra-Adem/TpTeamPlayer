@@ -22,7 +22,7 @@ interface ApiService {
     fun getAllPlayeByNameTeam(@Path(value = "team_name", encoded = true) team_name: String):Call<ArrayList<Player>>
 
     @POST("/CreateTeam")
-    fun createAccount(@Body team:Team):Call<Team>
+    fun createTeam(@Body team:Team):Call<Team>
 
     //https://radiant-brook-13048.herokuapp.com/
     //http://10.0.2.2:3000/

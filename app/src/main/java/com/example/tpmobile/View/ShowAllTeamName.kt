@@ -1,5 +1,6 @@
 package com.example.tpmobile.View
 
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,7 +20,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ShowAllTeamName : AppCompatActivity() {
+    private var apiService = ApiService.create()
+
     private lateinit var listView : ListView
+
 
 
     private var apiService = ApiService.create()
@@ -40,10 +44,12 @@ class ShowAllTeamName : AppCompatActivity() {
                 }
                 Log.e("TeamNameMustaphaIN",TeamName.toString())
                 Afficher(TeamName)
+
             }
             override fun onFailure(call: Call<ArrayList<Team>>, t: Throwable) {
                 Log.e("tag",t.message)
                 Log.e("tag",t.cause.toString())
+
                 error("KO")
             }
         })
@@ -70,6 +76,7 @@ class ShowAllTeamName : AppCompatActivity() {
             intent.putExtra("Username", teamName.get(position))
             startActivity(intent)
         })*/
+
 
     }
 }
