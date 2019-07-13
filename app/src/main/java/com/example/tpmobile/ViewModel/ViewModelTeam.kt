@@ -10,7 +10,7 @@ import com.example.tpmobile.Model.Team
 import com.example.tpmobile.Repo.RepoTeam
 
 class ViewModelTeam:ViewModel() {
-    var teamRep:RepoTeam= RepoTeam()
+/*    var teamRep:RepoTeam= RepoTeam()
 
 
 
@@ -30,7 +30,7 @@ class ViewModelTeam:ViewModel() {
 
 
 
-
+*/
 
 
 }

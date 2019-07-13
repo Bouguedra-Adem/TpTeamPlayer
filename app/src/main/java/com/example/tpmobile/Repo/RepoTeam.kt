@@ -22,7 +22,7 @@ import java.util.concurrent.BlockingQueue
 
 
 class RepoTeam {
-
+/*
     private var apiService = ApiService.create()
 
     init {
@@ -120,4 +120,5 @@ class RepoTeam {
         })
         return  stringReponse
     }
+    */
 }

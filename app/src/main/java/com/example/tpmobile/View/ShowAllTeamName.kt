@@ -26,7 +26,7 @@ class ShowAllTeamName : AppCompatActivity() {
 
 
 
-    private var apiService = ApiService.create()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
