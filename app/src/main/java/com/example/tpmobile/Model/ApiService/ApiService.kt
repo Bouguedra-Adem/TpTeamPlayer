@@ -1,10 +1,9 @@
 package com.example.tpmobile.Model.ApiService
 
+import com.example.tpmobile.Model.Entity.Team
 import com.example.tpmobile.Model.Player
-import com.example.tpmobile.Model.Team
 import retrofit2.Call
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.GET

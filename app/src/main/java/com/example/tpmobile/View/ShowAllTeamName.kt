@@ -5,16 +5,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
-import android.widget.TextView
-import androidx.lifecycle.ViewModelProviders
 import com.example.tpmobile.Model.ApiService.ApiService
-import com.example.tpmobile.Model.Team
+import com.example.tpmobile.Model.Entity.Team
 import com.example.tpmobile.R
-import com.example.tpmobile.ViewModel.ViewModelTeam
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
