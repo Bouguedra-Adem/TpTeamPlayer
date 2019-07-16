@@ -1,27 +1,27 @@
 package com.example.tpmobile.Repo
 
-import android.os.Build
-import android.os.Handler
-import android.util.Log
-import android.widget.Toast
-import androidx.annotation.RequiresApi
-import com.example.tpmobile.Model.ApiService.ApiService
-import com.example.tpmobile.Model.Player
-import com.example.tpmobile.Model.Team
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.util.*
-import java.util.concurrent.TimeUnit
-import kotlin.collections.ArrayList
-import kotlin.math.log
-import org.json.JSONArray
-import retrofit2.Retrofit
-import java.util.concurrent.ArrayBlockingQueue
-import java.util.concurrent.BlockingQueue
+import android.app.Application
+import com.example.tpmobile.Model.Entity.Team
+import com.example.tpsqlite.Model.Bdd
+import com.example.tpsqlite.Model.Dao.TeamDao
 
 
-class RepoTeam {
+class RepoTeam (application: Application){
+    private val Team:TeamDao?
+     init{
+         var db=Bdd.getInstance(application)
+         this.Team=db!!.TeamDao()
+
+     }
+    fun insertTeam(Team:Team){
+        this.Team!!.insertTeam(Team)
+    }
+    fun getTeam(): List<Team> {
+        return  this.Team!!.getAllteam()
+    }
+    fun deleteTeam(team:Team){
+        this.Team!!.deleteTeam(team)
+    }
 /*
     private var apiService = ApiService.create()
 

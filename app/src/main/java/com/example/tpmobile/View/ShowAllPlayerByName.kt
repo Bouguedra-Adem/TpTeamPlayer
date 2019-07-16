@@ -7,7 +7,6 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import com.example.tpmobile.Model.ApiService.ApiService
 import com.example.tpmobile.Model.Player
-import com.example.tpmobile.Model.Team
 import com.example.tpmobile.R
 import retrofit2.Call
 import retrofit2.Callback
