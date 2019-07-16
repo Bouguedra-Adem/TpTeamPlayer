@@ -1,6 +1,4 @@
-package com.example.tpsqlite.Model.Dao
-
-import androidx.lifecycle.LiveData
+package com.example.tpmobile.Model.Dao
 import androidx.room.*
 import com.example.tpmobile.Model.Entity.Team
 

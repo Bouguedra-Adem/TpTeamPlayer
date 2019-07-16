@@ -1,15 +1,15 @@
 package com.example.tpmobile.Repo
 
 import android.app.Application
+import com.example.tpmobile.Model.Bdd
+import com.example.tpmobile.Model.Dao.TeamDao
 import com.example.tpmobile.Model.Entity.Team
-import com.example.tpsqlite.Model.Bdd
-import com.example.tpsqlite.Model.Dao.TeamDao
 
 
 class RepoTeam (application: Application){
-    private val Team:TeamDao?
+    private val Team: TeamDao?
      init{
-         var db=Bdd.getInstance(application)
+         var db= Bdd.getInstance(application)
          this.Team=db!!.TeamDao()
 
      }
