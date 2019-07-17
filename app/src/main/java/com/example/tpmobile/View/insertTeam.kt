@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.work.Constraints
 import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
 import com.example.tpmobile.Model.ApiService.ApiService
 import com.example.tpmobile.Model.Entity.Team
 import com.example.tpmobile.R
@@ -33,6 +34,9 @@ class insertTeam : AppCompatActivity() {
                  setRequiresStorageNotLow(true). build()
              val req = OneTimeWorkRequest. Builder (ServiceWorker::class.java)
                  .setConstraints(contraints). build()
+
+             val workManager = WorkManager.getInstance()
+             workManager.enqueue(req)
              /*
               apiService.createTeam(team).enqueue(object : Callback<Team>{
 

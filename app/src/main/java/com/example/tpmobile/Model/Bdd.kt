@@ -21,7 +21,7 @@ abstract  class Bdd :RoomDatabase() {
                 synchronized(Bdd::class.java){
                     if (database==null) {
 
-                        database= Room.databaseBuilder(context.applicationContext,Bdd::class.java,"Database").build()
+                        database= Room.databaseBuilder(context.applicationContext,Bdd::class.java,"Database").allowMainThreadQueries().build()
                     }
 
                 }
